@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
         def index 
             tasks = Task.all
-            render json: tasks, except: [:created_at, :updated_at]
+            render json: tasks
         end
     
         def show
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
         def create
             task = Task.new(task_params)
             if task.save
-                render json: task, except: [:created_at, :updated_at]
+                render json: task
             else
                 render json: {error: "Oops, something went wrong."}
             end
